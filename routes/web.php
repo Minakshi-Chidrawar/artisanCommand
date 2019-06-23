@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('names/index', 'NamesController@index');
+Route::get('names/create', 'NamesController@create');
+Route::post('names', 'NamesController@store');
