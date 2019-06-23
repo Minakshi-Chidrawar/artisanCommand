@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class NamesController extends Controller
 {
@@ -13,7 +14,14 @@ class NamesController extends Controller
      */
     public function index()
     {
-        //
+        $filePath = public_path() . "/names.txt";        
+        //$names = File::get($filePath);
+        //$names = implode('', $names);
+
+        $names = $arr = file($filePath, FILE_IGNORE_NEW_LINES);;
+        //dd($names);
+
+        return view('index', compact('names'));
     }
 
     /**
@@ -23,7 +31,7 @@ class NamesController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
