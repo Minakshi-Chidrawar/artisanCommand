@@ -21,7 +21,7 @@ class NamesController extends Controller
         $names = $arr = file($filePath, FILE_IGNORE_NEW_LINES);;
         //dd($names);
 
-        return view('index', compact('names'));
+        return view('names.index', compact('names'));
     }
 
     /**
@@ -31,7 +31,7 @@ class NamesController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('names.create');
     }
 
     /**
