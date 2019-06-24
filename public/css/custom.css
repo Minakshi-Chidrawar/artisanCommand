@@ -1,0 +1,31 @@
+  /* Make the image fully responsive */
+  html, body {
+    color: #636b6f;
+    font-family: 'Lobster', cursive;
+    margin: 0;
+}
+
+.bs-callout {
+    padding: 20px 10px 10px 20px;
+    margin: 20px 0px;
+    border-width: 1px 1px 1px 5px;
+    border-style: solid;
+    border-color: #7b0d0d;
+    border-image: none;
+    border-radius: 0;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.176);
+}
+
+.font-color {
+  color: #721c24;
+  font-family: 'Roboto', cursive;
+  font-size: 14px;
+}
+
+.rounded {
+  border: 1px solid black;
+}
+
+/* ul {
+  list-style-type: none;
+} */
