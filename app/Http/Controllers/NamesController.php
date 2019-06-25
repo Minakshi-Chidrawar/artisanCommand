@@ -7,86 +7,38 @@ use Illuminate\Support\Facades\File;
 
 class NamesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $filePath = public_path() . "/names.txt";        
-        //$names = File::get($filePath);
-        //$names = implode('', $names);
-
-        $names = $arr = file($filePath, FILE_IGNORE_NEW_LINES);;
-        //dd($names);
+        $names = $arr = file($filePath, FILE_IGNORE_NEW_LINES);
 
         return view('names.index', compact('names'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('names.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3',
+        ]);
+
+        $fileName = public_path() . "/names.txt";
+        $name = $request->name;
+        file_put_contents($fileName, PHP_EOL . $name, FILE_APPEND);
+
+        return redirect()->action('NamesController@index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show()
     {
-        //
-    }
+        $filePath = public_path() . "/names.txt";        
+        $names = file($filePath, FILE_IGNORE_NEW_LINES);
+        $randomNames = array_rand(array_flip($names), 5);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('names.show', compact('names', 'randomNames'));
     }
 }
