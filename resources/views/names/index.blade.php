@@ -10,35 +10,6 @@
         </div>
     </div>
 
-    <!-- @foreach($names as $name)
-        <div class="row">
-            <div class="col-2">
-                {{ $name }}
-            </div>
-        </div>
-    @endforeach -->
-
-    <!-- <div class="card-deck">
-        <div class="card">
-            <div class="card-body">
-                @foreach($names as $name)
-                    <div class="row">
-                        <div class="">
-                            {{ $name }}
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Select 5 Winners</button>
-
-        <div class="card">
-            <div class="card-body">
-            </div>
-        </div>
-    </div> -->
-
     <div class="row">
         <div class="col-4 rounded">
             <ul class="list-unstyled pl-3">
@@ -50,12 +21,12 @@
             </ul>
         </div>
 
-        <div class="col-4 text-center" style="margin-top:10%;">
-            <button type="submit" class="btn btn-primary">Select 5 Winners</button>
+        <div class="col-3 text-center" style="margin-top:10%;">
+            <button type="submit" class="btn btn-primary"  onclick="window.location='{{ route("names.show") }}'">Select 5 Winners</button>
         </div>
 
         <div class="col-4 rounded" id ="winners">
-            <p>Test</p>
+            <h3>Winner List</h3>            
         </div>
     </div>
 @endsection
