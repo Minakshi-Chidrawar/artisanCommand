@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('names/index', 'NamesController@index');
-Route::get('names/create', 'NamesController@create');
-Route::post('names', 'NamesController@store');
+Route::get('/', array('uses' => 'NamesController@index', 'as' => 'index'));
+Route::get('names/create', array('uses' => 'NamesController@create', 'as' => 'names.add'));
+Route::post('/names', array('uses' => 'NamesController@store', 'as' => 'names.add'));
+Route::get('/show', array('uses' => 'NamesController@show', 'as' => 'names.show'));
