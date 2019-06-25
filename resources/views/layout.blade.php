@@ -14,7 +14,6 @@
     <body>
         <div class="container">
             <div class="jumbotron mt-5">
-                <!-- @include('nav') -->
                 @yield('content')
             </div>
         </div>
